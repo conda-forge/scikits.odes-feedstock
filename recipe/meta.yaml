@@ -1,5 +1,5 @@
 {% set name = "scikits.odes" %}
-{% set version = "2.6.1" %}
+{% set version = "2.6.2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,15 +7,15 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: cb5831a26d6a1325d24fc0800e2232195fe09c369d6e754d2f43276882156e4d
+  sha256: 267d8bfa1e18d075d574158053d887562381e88176ebab856516b52b14860983
 
 build:
-  number: 3
+  number: 0
   # NOTE : There is a pyproject.yml file that seems to force wheels to be built
   # so remove it.
   script:
-    - "/bin/rm -f pyproject.toml"
-    - "{{ PYTHON }} -m pip install . -vv"
+    - /bin/rm -f pyproject.toml
+    - {{ PYTHON }} -m pip install . -vv
 
 requirements:
   build:
@@ -48,7 +48,7 @@ about:
   license: BSD-3-Clause
   license_family: BSD
   license_file: LICENSE.txt
-  summary: 'A python module for ordinary differential equation anddifferential algebraic equation solvers'
+  summary: A python module for ordinary differential equation anddifferential algebraic equation solvers
   description: |
     Odes is a scikit toolkit for scipy to add extra ode solvers. Specifically
     it interfaces the Sundials solvers cvode, cvodes, ida and idas. It this way
