@@ -11,10 +11,11 @@ source:
 
 build:
   number: 1
-  # NOTE : There is a pyproject.yml file that seems to force wheels to be built
+  # NOTE : There is a pyproject.toml file that seems to force wheels to be built
   # so remove it.
   script:
-    - /bin/rm -f pyproject.toml
+    - /bin/rm -f pyproject.toml  # [unix]
+    - Remove-Item pyproject.toml  # [win]
     - {{ PYTHON }} -m pip install . -vv
 
 requirements:
