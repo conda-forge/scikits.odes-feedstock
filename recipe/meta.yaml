@@ -14,7 +14,8 @@ build:
   # NOTE : There is a pyproject.toml file that seems to force wheels to be built
   # so remove it.
   script:
-    - {{ PYTHON }} -c "__import__('pathlib').Path('pyproject.toml').unlink()"
+    - rm -f pyproject.toml  # [unix]
+    - del /f pyproject.toml  # [win]
     - {{ PYTHON }} -m pip install . -vv
 
 requirements:
@@ -25,7 +26,7 @@ requirements:
     - cython
     - libblas
     - numpy
-    - pip
+    - pip <21.3  # pip 21.3 introduced PEP 660 changes that break this build on Windows
     - python
     - setuptools
     - sundials >=5.1.0,<6 # scikits-odes docs say ==5.1.0, hope this is reasonable
