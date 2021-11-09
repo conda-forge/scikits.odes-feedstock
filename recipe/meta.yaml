@@ -13,11 +13,8 @@ build:
   number: 1
   # NOTE : There is a pyproject.toml file that seems to force wheels to be built
   # so remove it.
-  script:
-    #- rm -f pyproject.toml  # [unix]
-    #- del /f pyproject.toml  # [win]
-    - {{ PYTHON }} -c "__import__('os').unlink('pyproject.toml')"
-    - {{ PYTHON }} -m pip install . -vv
+  script: /bin/rm -f pyproject.toml && {{ PYTHON }} -m pip install . -vv  # [not win]
+  script: del /f pyproject.toml && {{ PYTHON }} -m pip install . -vv  # [win]
 
 requirements:
   build:
