@@ -1,5 +1,5 @@
 {% set name = "scikits.odes" %}
-{% set version = "2.6.4" %}
+{% set version = "2.6.5" %}
 
 package:
   name: {{ name|lower }}
@@ -7,10 +7,10 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 7d2f44d243be6447068e25903c04076b9db33b3f5169f35204f34aca99b41a10
+  sha256: 30fd69364af47c0c965951c954789a5449f552c6d5b2353d3191c701062d3d82
 
 build:
-  number: 1
+  number: 0
   # NOTE : There is a pyproject.yml file that seems to force wheels to be built
   # so remove it.
   script:
