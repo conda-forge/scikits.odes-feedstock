@@ -27,7 +27,7 @@ requirements:
     - numpy
     - pip
     - python
-    - setuptools
+    - setuptools <=64.0.0
     - sundials >=5.1.0,<6 # scikits-odes docs say ==5.1.0, hope this is reasonable
   run:
     - python
