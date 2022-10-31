@@ -10,7 +10,7 @@ source:
   sha256: 30fd69364af47c0c965951c954789a5449f552c6d5b2353d3191c701062d3d82
 
 build:
-  number: 0
+  number: 1
   # NOTE : There is a pyproject.yml file that seems to force wheels to be built
   # so remove it.
   script:
