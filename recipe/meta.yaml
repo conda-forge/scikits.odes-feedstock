@@ -28,11 +28,11 @@ requirements:
     - pip
     - python
     - setuptools <=64.0.0
-    - sundials >=5.1.0,<6 # scikits-odes docs say ==5.1.0, hope this is reasonable
+    - sundials >=6.0.0
   run:
     - python
     - scipy
-    - sundials >=5.1.0,<6
+    - sundials >=6.0.0
     - {{ pin_compatible('numpy') }}
 
 test:
