@@ -1,5 +1,5 @@
 {% set name = "scikits.odes" %}
-{% set version = "2.6.5" %}
+{% set version = "2.7.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,10 +7,10 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 30fd69364af47c0c965951c954789a5449f552c6d5b2353d3191c701062d3d82
+  sha256: a71e19e1485893754ae8c050668232fcc694f17b83602e75fbebf7bf9f975e1e
 
 build:
-  number: 1
+  number: 0
   # NOTE : There is a pyproject.yml file that seems to force wheels to be built
   # so remove it.
   script:
@@ -28,11 +28,11 @@ requirements:
     - pip
     - python
     - setuptools <=64.0.0
-    - sundials >=5.1.0,<6 # scikits-odes docs say ==5.1.0, hope this is reasonable
+    - sundials >=6.0.0
   run:
     - python
     - scipy
-    - sundials >=5.1.0,<6
+    - sundials >=6.0.0
     - {{ pin_compatible('numpy') }}
 
 test:
