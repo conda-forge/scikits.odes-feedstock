@@ -23,7 +23,7 @@ requirements:
     - {{ stdlib("c") }}
     - {{ compiler('fortran') }}
   host:
-    - cython
+    - cython <3.0
     - libblas
     - numpy
     - pip
