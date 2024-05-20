@@ -10,7 +10,7 @@ source:
   sha256: a71e19e1485893754ae8c050668232fcc694f17b83602e75fbebf7bf9f975e1e
 
 build:
-  number: 1
+  number: 2
   # NOTE : There is a pyproject.yml file that seems to force wheels to be built
   # so remove it.
   script:
@@ -35,7 +35,6 @@ requirements:
     - python
     - scipy
     - sundials >=6.0.0,<7
-    - {{ pin_compatible('numpy') }}
 
 test:
   imports:
