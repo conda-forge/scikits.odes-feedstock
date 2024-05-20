@@ -16,6 +16,7 @@ build:
   script:
     - /bin/rm -f pyproject.toml
     - {{ PYTHON }} -m pip install . -vv
+  skip: true  # [py=312]
 
 requirements:
   build:
@@ -27,11 +28,11 @@ requirements:
     - libblas
     - numpy
     - pip
-    - python <3.12
+    - python
     - setuptools <=64.0.0
     - sundials >=6.0.0,<7
   run:
-    - python <3.12
+    - python
     - scipy
     - sundials >=6.0.0,<7
     - {{ pin_compatible('numpy') }}
