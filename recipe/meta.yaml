@@ -27,11 +27,11 @@ requirements:
     - libblas
     - numpy
     - pip
-    - python
+    - python <3.12
     - setuptools <=64.0.0
     - sundials >=6.0.0,<7
   run:
-    - python
+    - python <3.12
     - scipy
     - sundials >=6.0.0,<7
     - {{ pin_compatible('numpy') }}
