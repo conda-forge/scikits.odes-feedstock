@@ -10,29 +10,31 @@ source:
   sha256: a71e19e1485893754ae8c050668232fcc694f17b83602e75fbebf7bf9f975e1e
 
 build:
-  number: 0
+  number: 1
   # NOTE : There is a pyproject.yml file that seems to force wheels to be built
   # so remove it.
   script:
     - /bin/rm -f pyproject.toml
     - {{ PYTHON }} -m pip install . -vv
+  skip: true  # [py==312]
 
 requirements:
   build:
     - {{ compiler('c') }}
+    - {{ stdlib('c') }}
     - {{ compiler('fortran') }}
   host:
-    - cython
+    - cython <3.0
     - libblas
     - numpy
     - pip
     - python
     - setuptools <=64.0.0
-    - sundials >=6.0.0
+    - sundials >=6.0.0,<7
   run:
     - python
     - scipy
-    - sundials >=6.0.0
+    - sundials >=6.0.0,<7
     - {{ pin_compatible('numpy') }}
 
 test:
