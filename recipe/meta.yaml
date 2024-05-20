@@ -16,7 +16,7 @@ build:
   script:
     - /bin/rm -f pyproject.toml
     - {{ PYTHON }} -m pip install . -vv
-  skip: true  # [py=312]
+  skip: true  # [py==312]
 
 requirements:
   build:
