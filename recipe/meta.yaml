@@ -10,7 +10,7 @@ source:
   sha256: a71e19e1485893754ae8c050668232fcc694f17b83602e75fbebf7bf9f975e1e
 
 build:
-  number: 2
+  number: 3
   # NOTE : There is a pyproject.yml file that seems to force wheels to be built
   # so remove it.
   script:
@@ -20,6 +20,10 @@ build:
 
 requirements:
   build:
+    - python                                 # [build_platform != target_platform]
+    - cross-python_{{ target_platform }}     # [build_platform != target_platform]
+    - cython <3                              # [build_platform != target_platform]
+    - numpy                                  # [build_platform != target_platform]
     - {{ compiler('c') }}
     - {{ stdlib('c') }}
     - {{ compiler('fortran') }}
