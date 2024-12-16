@@ -1,16 +1,16 @@
 {% set name = "scikits.odes" %}
-{% set version = "2.7.0" %}
+{% set version = "3.1.0" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: a71e19e1485893754ae8c050668232fcc694f17b83602e75fbebf7bf9f975e1e
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/scikits_odes-{{ version }}.tar.gz
+  sha256: 78c22d07ac1fee7dfa1734641a338801a97078827cade831b3ca2b191264f340
 
 build:
-  number: 3
+  number: 0
   # NOTE : There is a pyproject.yml file that seems to force wheels to be built
   # so remove it.
   script:
