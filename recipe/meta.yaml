@@ -41,6 +41,7 @@ requirements:
     - cython <3
     - libblas
     - meson-python
+    - more-itertools  # dependency of setuptools
     - numpy
     - pip
     - python
