@@ -37,9 +37,8 @@ test:
 outputs:
   - name: scikits-odes-core
     version: {{ version }}
-    source:
-      url: https://pypi.org/packages/source/s/scikits-odes-core/scikits-odes-core-{{ version }}.tar.gz
-      sha256: 9225c10e5e8f417fef7e9411895036c9ec580e73d262653f97f54fdee30e8fb7
+    url: https://pypi.org/packages/source/s/scikits-odes-core/scikits-odes-core-{{ version }}.tar.gz
+    sha256: 9225c10e5e8f417fef7e9411895036c9ec580e73d262653f97f54fdee30e8fb7
     requirements:
       host:
         - pip
@@ -49,9 +48,8 @@ outputs:
         - python
   - name: scikits-odes-daepack
     version: {{ version }}
-    source:
-      url: https://pypi.org/packages/source/s/scikits-odes-daepack/scikits-odes-daepack-{{ version }}.tar.gz
-      sha256: 26ff10369819e4e115253238542acfe4440a03a41792a7a2d741d57d4eb92569
+    url: https://pypi.org/packages/source/s/scikits-odes-daepack/scikits-odes-daepack-{{ version }}.tar.gz
+    sha256: 26ff10369819e4e115253238542acfe4440a03a41792a7a2d741d57d4eb92569
     requirements:
       build:
         - meson-python
@@ -65,9 +63,8 @@ outputs:
         - scikits-odes-core =={{ version }}
   - name: scikits-odes-sundials
     version: {{ version }}
-    source:
-      url: https://pypi.org/packages/source/s/scikits-odes-sundials/scikits-odes-sundials-{{ version }}.tar.gz
-      sha256: 277d0400812f63a11624565d82f9ecc7497263ebfb9f049e5ca8ab2d025c5621
+    url: https://pypi.org/packages/source/s/scikits-odes-sundials/scikits-odes-sundials-{{ version }}.tar.gz
+    sha256: 277d0400812f63a11624565d82f9ecc7497263ebfb9f049e5ca8ab2d025c5621
     requirements:
       build:
         - python                                 # [build_platform != target_platform]
