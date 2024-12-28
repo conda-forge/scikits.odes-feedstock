@@ -13,10 +13,10 @@ source:
     folder: scikits-odes-core
   - url: https://pypi.org/packages/source/s/scikits-odes-daepack/scikits_odes_daepack-{{ version }}.tar.gz
     sha256: 26ff10369819e4e115253238542acfe4440a03a41792a7a2d741d57d4eb92569
-    folder: sckits-odes-daepack
+    folder: scikits-odes-daepack
   - url: https://pypi.org/packages/source/s/scikits-odes-sundials/scikits_odes_sundials-{{ version }}.tar.gz
     sha256: 277d0400812f63a11624565d82f9ecc7497263ebfb9f049e5ca8ab2d025c5621
-    folder: sckites-odes-sundials
+    folder: scikits-odes-sundials
 
 build:
   number: 0
