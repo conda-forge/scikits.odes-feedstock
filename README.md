@@ -161,9 +161,6 @@ Current release info
 
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-scikits--odes--core-green.svg)](https://anaconda.org/conda-forge/scikits-odes-core) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/scikits-odes-core.svg)](https://anaconda.org/conda-forge/scikits-odes-core) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/scikits-odes-core.svg)](https://anaconda.org/conda-forge/scikits-odes-core) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/scikits-odes-core.svg)](https://anaconda.org/conda-forge/scikits-odes-core) |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-scikits--odes--daepack-green.svg)](https://anaconda.org/conda-forge/scikits-odes-daepack) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/scikits-odes-daepack.svg)](https://anaconda.org/conda-forge/scikits-odes-daepack) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/scikits-odes-daepack.svg)](https://anaconda.org/conda-forge/scikits-odes-daepack) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/scikits-odes-daepack.svg)](https://anaconda.org/conda-forge/scikits-odes-daepack) |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-scikits--odes--sundials-green.svg)](https://anaconda.org/conda-forge/scikits-odes-sundials) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/scikits-odes-sundials.svg)](https://anaconda.org/conda-forge/scikits-odes-sundials) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/scikits-odes-sundials.svg)](https://anaconda.org/conda-forge/scikits-odes-sundials) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/scikits-odes-sundials.svg)](https://anaconda.org/conda-forge/scikits-odes-sundials) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-scikits.odes-green.svg)](https://anaconda.org/conda-forge/scikits.odes) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/scikits.odes.svg)](https://anaconda.org/conda-forge/scikits.odes) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/scikits.odes.svg)](https://anaconda.org/conda-forge/scikits.odes) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/scikits.odes.svg)](https://anaconda.org/conda-forge/scikits.odes) |
 
 Installing scikits.odes
@@ -176,41 +173,41 @@ conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `scikits-odes-core, scikits-odes-daepack, scikits-odes-sundials, scikits.odes` can be installed with `conda`:
+Once the `conda-forge` channel has been enabled, `scikits.odes` can be installed with `conda`:
 
 ```
-conda install scikits-odes-core scikits-odes-daepack scikits-odes-sundials scikits.odes
-```
-
-or with `mamba`:
-
-```
-mamba install scikits-odes-core scikits-odes-daepack scikits-odes-sundials scikits.odes
-```
-
-It is possible to list all of the versions of `scikits-odes-core` available on your platform with `conda`:
-
-```
-conda search scikits-odes-core --channel conda-forge
+conda install scikits.odes
 ```
 
 or with `mamba`:
 
 ```
-mamba search scikits-odes-core --channel conda-forge
+mamba install scikits.odes
+```
+
+It is possible to list all of the versions of `scikits.odes` available on your platform with `conda`:
+
+```
+conda search scikits.odes --channel conda-forge
+```
+
+or with `mamba`:
+
+```
+mamba search scikits.odes --channel conda-forge
 ```
 
 Alternatively, `mamba repoquery` may provide more information:
 
 ```
 # Search all versions available on your platform:
-mamba repoquery search scikits-odes-core --channel conda-forge
+mamba repoquery search scikits.odes --channel conda-forge
 
-# List packages depending on `scikits-odes-core`:
-mamba repoquery whoneeds scikits-odes-core --channel conda-forge
+# List packages depending on `scikits.odes`:
+mamba repoquery whoneeds scikits.odes --channel conda-forge
 
-# List dependencies of `scikits-odes-core`:
-mamba repoquery depends scikits-odes-core --channel conda-forge
+# List dependencies of `scikits.odes`:
+mamba repoquery depends scikits.odes --channel conda-forge
 ```
 
 
