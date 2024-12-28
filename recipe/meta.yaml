@@ -31,9 +31,7 @@ requirements:
   build:
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
     - cython <3                              # [build_platform != target_platform]
-    - meson-python                           # [build_platform != target_platform]
     - numpy                                  # [build_platform != target_platform]
-    - pkgconfig                              # [build_platform != target_platform]
     - python                                 # [build_platform != target_platform]
     - {{ compiler('c') }}
     - {{ compiler('fortran') }}
@@ -45,6 +43,7 @@ requirements:
     - more-itertools  # dependency of setuptools
     - numpy
     - pip
+    - pkgconfig
     - python
     - setuptools <=64.0.0
     - sundials >=6.0.0,<7
