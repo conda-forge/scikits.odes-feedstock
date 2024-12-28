@@ -21,10 +21,10 @@ source:
 build:
   number: 0
   script:
-    - {{ PYTHON }} -m pip install --no-dependencies scikits-odes-core -vv
-    - {{ PYTHON }} -m pip install --no-dependencies scikits-odes-sundials -vv
-    - {{ PYTHON }} -m pip install --no-dependencies scikits-odes-daepack -vv
-    - {{ PYTHON }} -m pip install --no-dependencies . -vv
+    - {{ PYTHON }} -m pip install --no-dependencies --no-build-isolation scikits-odes-core/ -vv
+    - {{ PYTHON }} -m pip install --no-dependencies --no-build-isolation scikits-odes-sundials/ -vv
+    - {{ PYTHON }} -m pip install --no-dependencies --no-build-isolation scikits-odes-daepack/ -vv
+    - {{ PYTHON }} -m pip install --no-dependencies --no-build-isolation . -vv
 
 requirements:
   build:
