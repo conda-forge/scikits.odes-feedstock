@@ -6,7 +6,7 @@ package:
   version: {{ version }}
 
 source:
-  - url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  - url: https://pypi.org/packages/source/s/scikits.odes/scikits_odes-{{ version }}.tar.gz
     sha256: a71e19e1485893754ae8c050668232fcc694f17b83602e75fbebf7bf9f975e1e
   - url: https://pypi.org/packages/source/s/scikits-odes-core/scikits-odes-core-{{ version }}.tar.gz
     sha256: 9225c10e5e8f417fef7e9411895036c9ec580e73d262653f97f54fdee30e8fb7
