@@ -21,19 +21,35 @@ source:
 build:
   number: 0
   script:
+    - {{ PYTHON }} -m pip install --no-dependencies scikits-odes-core -vv
+    - {{ PYTHON }} -m pip install --no-dependencies scikits-odes-sundials -vv
+    - {{ PYTHON }} -m pip install --no-dependencies scikits-odes-daepack -vv
     - {{ PYTHON }} -m pip install --no-dependencies . -vv
 
 requirements:
+  build:
+    - cross-python_{{ target_platform }}     # [build_platform != target_platform]
+    - cython <3                              # [build_platform != target_platform]
+    - meson-python
+    - numpy                                  # [build_platform != target_platform]
+    - pkgconfig
+    - python                                 # [build_platform != target_platform]
+    - {{ compiler('c') }}
+    - {{ compiler('fortran') }}
+    - {{ stdlib('c') }}
   host:
+    - cython <3
+    - libblas
+    - numpy
     - pip
     - python
-    - setuptools
+    - setuptools <=64.0.0
+    - sundials >=6.0.0,<7
   run:
+    - numpy
     - python
-    - scikits-odes-core
-    - scikits-odes-daepack
-    - scikits-odes-sundials
     - scipy
+    - sundials >=6.0.0,<7
 
 test:
   imports:
@@ -42,55 +58,6 @@ test:
     - integrate.py
   commands:
     - python integrate.py
-
-outputs:
-  - name: scikits-odes-core
-    version: {{ version }}
-    requirements:
-      host:
-        - pip
-        - python
-        - setuptools
-      run:
-        - python
-  - name: scikits-odes-daepack
-    version: {{ version }}
-    requirements:
-      build:
-        - meson-python
-        - numpy
-      host:
-        - pip
-        - python
-        - setuptools
-      run:
-        - python
-        - scikits-odes-core =={{ version }}
-  - name: scikits-odes-sundials
-    version: {{ version }}
-    requirements:
-      build:
-        - python                                 # [build_platform != target_platform]
-        - cross-python_{{ target_platform }}     # [build_platform != target_platform]
-        - cython <3                              # [build_platform != target_platform]
-        - numpy                                  # [build_platform != target_platform]
-        - pkgconfig
-        - {{ compiler('c') }}
-        - {{ stdlib('c') }}
-        - {{ compiler('fortran') }}
-      host:
-        - cython <3
-        - libblas
-        - numpy
-        - pip
-        - python
-        - setuptools <=64.0.0
-        - sundials >=6.0.0,<7
-      run:
-        - numpy
-        - python
-        - scikits-odes-core =={{ version }}
-        - sundials >=6.0.0,<7
 
 about:
   home: https://github.com/bmcage/odes
