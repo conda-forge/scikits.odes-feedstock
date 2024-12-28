@@ -25,6 +25,7 @@ build:
     - {{ PYTHON }} -m pip install --no-dependencies --no-build-isolation scikits-odes-sundials/ -vv
     - {{ PYTHON }} -m pip install --no-dependencies --no-build-isolation scikits-odes-daepack/ -vv
     - {{ PYTHON }} -m pip install --no-dependencies --no-build-isolation . -vv
+  skip: true  # [py==312]
 
 requirements:
   build:
