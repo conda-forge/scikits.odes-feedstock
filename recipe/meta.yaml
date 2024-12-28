@@ -49,7 +49,7 @@ requirements:
     - pip
     - pkgconfig
     - python
-    - setuptools <=64.0.0
+    - setuptools
     - sundials >=6.0.0,<7
   run:
     - numpy
