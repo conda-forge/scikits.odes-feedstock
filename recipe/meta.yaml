@@ -1,41 +1,58 @@
 {% set name = "scikits.odes" %}
-{% set version = "2.7.0" %}
+{% set version = "3.0.0" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: a71e19e1485893754ae8c050668232fcc694f17b83602e75fbebf7bf9f975e1e
-
+  - url: https://pypi.org/packages/source/s/scikits.odes/scikits_odes-{{ version }}.tar.gz
+    sha256: 7255ca51d7acd32c844244e535276a7119111a9edeea9ea36c60ee51d738a0d9
+  - url: https://pypi.org/packages/source/s/scikits-odes-core/scikits_odes_core-{{ version }}.tar.gz
+    sha256: 9225c10e5e8f417fef7e9411895036c9ec580e73d262653f97f54fdee30e8fb7
+    folder: scikits-odes-core
+  - url: https://pypi.org/packages/source/s/scikits-odes-daepack/scikits_odes_daepack-{{ version }}.tar.gz
+    sha256: 26ff10369819e4e115253238542acfe4440a03a41792a7a2d741d57d4eb92569
+    folder: scikits-odes-daepack
+  - url: https://pypi.org/packages/source/s/scikits-odes-sundials/scikits_odes_sundials-{{ version }}.tar.gz
+    sha256: 277d0400812f63a11624565d82f9ecc7497263ebfb9f049e5ca8ab2d025c5621
+    folder: scikits-odes-sundials
 build:
-  number: 3
-  # NOTE : There is a pyproject.yml file that seems to force wheels to be built
-  # so remove it.
+  number: 0
   script:
-    - /bin/rm -f pyproject.toml
-    - {{ PYTHON }} -m pip install . -vv
+    - {{ PYTHON }} -m pip install -vv --no-dependencies --no-build-isolation scikits-odes-core/
+    - {{ PYTHON }} -m pip install -vv --no-dependencies --no-build-isolation scikits-odes-sundials/
+    - export PKG_CONFIG_PATH=$PREFIX/lib/pkgconfig                                    # [build_platform != target_platform]
+    - echo "python = '${PREFIX}/bin/python'" >> ${CONDA_PREFIX}/meson_cross_file.txt  # [build_platform != target_platform]
+    - MESON_ARGS_REDUCED="$(echo $MESON_ARGS | sed 's/--buildtype release //g')"  # [unix]
+    - {{ PYTHON }} -m pip install -vv --no-dependencies --no-build-isolation scikits-odes-daepack/ -Csetup-args=${MESON_ARGS_REDUCED// / -Csetup-args=}  # [unix]
+    - {{ PYTHON }} -m pip install -vv --no-dependencies --no-build-isolation scikits-odes-daepack/  # [not unix]
+    - {{ PYTHON }} -m pip install --no-dependencies --no-build-isolation . -vv
   skip: true  # [py==312]
 
 requirements:
   build:
-    - python                                 # [build_platform != target_platform]
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
     - cython <3                              # [build_platform != target_platform]
+    - meson-python                           # [build_platform != target_platform]
     - numpy                                  # [build_platform != target_platform]
+    - python                                 # [build_platform != target_platform]
     - {{ compiler('c') }}
-    - {{ stdlib('c') }}
     - {{ compiler('fortran') }}
+    - {{ stdlib('c') }}
   host:
-    - cython <3.0
+    - cython <3
     - libblas
+    - meson-python
+    - more-itertools  # dependency of setuptools
     - numpy
     - pip
+    - pkgconfig
     - python
-    - setuptools <=64.0.0
+    - setuptools
     - sundials >=6.0.0,<7
   run:
+    - numpy
     - python
     - scipy
     - sundials >=6.0.0,<7
