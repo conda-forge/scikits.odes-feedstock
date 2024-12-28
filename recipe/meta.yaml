@@ -17,13 +17,16 @@ source:
   - url: https://pypi.org/packages/source/s/scikits-odes-sundials/scikits_odes_sundials-{{ version }}.tar.gz
     sha256: 277d0400812f63a11624565d82f9ecc7497263ebfb9f049e5ca8ab2d025c5621
     folder: scikits-odes-sundials
-
 build:
   number: 0
   script:
-    - {{ PYTHON }} -m pip install --no-dependencies --no-build-isolation scikits-odes-core/ -vv
-    - {{ PYTHON }} -m pip install --no-dependencies --no-build-isolation scikits-odes-sundials/ -vv
-    - {{ PYTHON }} -m pip install --no-dependencies --no-build-isolation scikits-odes-daepack/ -vv
+    - {{ PYTHON }} -m pip install -vv --no-dependencies --no-build-isolation scikits-odes-core/
+    - {{ PYTHON }} -m pip install -vv --no-dependencies --no-build-isolation scikits-odes-sundials/
+    - export PKG_CONFIG_PATH=$PREFIX/lib/pkgconfig                                    # [build_platform != target_platform]
+    - echo "python = '${PREFIX}/bin/python'" >> ${CONDA_PREFIX}/meson_cross_file.txt  # [build_platform != target_platform]
+    - MESON_ARGS_REDUCED="$(echo $MESON_ARGS | sed 's/--buildtype release //g')"  # [unix]
+    - {{ PYTHON }} -m pip install -vv --no-dependencies --no-build-isolation scikits-odes-daepack/ -Csetup-args=${MESON_ARGS_REDUCED// / -Csetup-args=}  # [unix]
+    - {{ PYTHON }} -m pip install -vv --no-dependencies --no-build-isolation scikits-odes-daepack/  # [not unix]
     - {{ PYTHON }} -m pip install --no-dependencies --no-build-isolation . -vv
   skip: true  # [py==312]
 
@@ -31,6 +34,7 @@ requirements:
   build:
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
     - cython <3                              # [build_platform != target_platform]
+    - meson-python                           # [build_platform != target_platform]
     - numpy                                  # [build_platform != target_platform]
     - python                                 # [build_platform != target_platform]
     - {{ compiler('c') }}
