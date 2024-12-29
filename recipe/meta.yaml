@@ -11,8 +11,8 @@ source:
   - url: https://pypi.org/packages/source/s/scikits-odes-core/scikits_odes_core-{{ version }}.tar.gz
     sha256: 3d40235eb5b365b8908f8c093dadf1f71f5bb52cfeacbee03403c6882f3e077b
     folder: scikits-odes-core
-  - url: https://files.pythonhosted.org/packages/ce/a8/6e885c0c6c802294955378842e80f9a9d218edcbc947bf26d6272101bc25/scikits_odes-{{ version }}.tar.gz
-    sha256: 78c22d07ac1fee7dfa1734641a338801a97078827cade831b3ca2b191264f340
+  - url: https://pypi.org/packages/source/s/scikits-odes-daepack/scikits_odes_daepack-3.0.0.tar.gz
+    sha256: 26ff10369819e4e115253238542acfe4440a03a41792a7a2d741d57d4eb92569
     folder: scikits-odes-daepack
   - url: https://pypi.org/packages/source/s/scikits-odes-sundials/scikits_odes_sundials-{{ version }}.tar.gz
     sha256: b32fbfb8628d3e7d3d4aec3df9adc394d2323aef125b366caeeaca29c89ed64f
