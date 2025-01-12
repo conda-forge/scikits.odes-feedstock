@@ -1,5 +1,5 @@
 {% set name = "scikits.odes" %}
-{% set version = "3.0.0" %}
+{% set version = "3.1.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,18 +7,18 @@ package:
 
 source:
   - url: https://pypi.org/packages/source/s/scikits.odes/scikits_odes-{{ version }}.tar.gz
-    sha256: 7255ca51d7acd32c844244e535276a7119111a9edeea9ea36c60ee51d738a0d9
+    sha256: b4dc7f724d17fb8febd9935a2904b78d7061f4258aac04180452892ad5c1becb
   - url: https://pypi.org/packages/source/s/scikits-odes-core/scikits_odes_core-{{ version }}.tar.gz
-    sha256: 9225c10e5e8f417fef7e9411895036c9ec580e73d262653f97f54fdee30e8fb7
+    sha256: 1b30a156e4eaa3856e9b1fbf71362c748d45d2f9260bfed6d527ee95983c3360
     folder: scikits-odes-core
-  - url: https://pypi.org/packages/source/s/scikits-odes-daepack/scikits_odes_daepack-{{ version }}.tar.gz
-    sha256: 26ff10369819e4e115253238542acfe4440a03a41792a7a2d741d57d4eb92569
+  - url: https://files.pythonhosted.org/packages/49/25/3eea5c28b139093eef124a9e1927d86de6adf59e2d133d08857b5f926e29/scikits_odes-{{ version }}.tar.gz
+    sha256: b4dc7f724d17fb8febd9935a2904b78d7061f4258aac04180452892ad5c1becb
     folder: scikits-odes-daepack
   - url: https://pypi.org/packages/source/s/scikits-odes-sundials/scikits_odes_sundials-{{ version }}.tar.gz
-    sha256: 277d0400812f63a11624565d82f9ecc7497263ebfb9f049e5ca8ab2d025c5621
+    sha256: 18c35ab2645289226ff16804db082fb91d1d31d3ee05f316d8b012accaea7032
     folder: scikits-odes-sundials
 build:
-  number: 2
+  number: 0
   script:
     - {{ PYTHON }} -m pip install -vv --no-dependencies --no-build-isolation scikits-odes-core/
     - {{ PYTHON }} -m pip install -vv --no-dependencies --no-build-isolation scikits-odes-sundials/
