@@ -32,7 +32,7 @@ build:
 requirements:
   build:
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
-    - cython <3                              # [build_platform != target_platform]
+    - cython >=3                             # [build_platform != target_platform]
     - meson-python                           # [build_platform != target_platform]
     - numpy                                  # [build_platform != target_platform]
     - python                                 # [build_platform != target_platform]
@@ -40,7 +40,7 @@ requirements:
     - {{ compiler('fortran') }}
     - {{ stdlib('c') }}
   host:
-    - cython <3
+    - cython >=3
     - libblas
     - meson-python
     - more-itertools  # dependency of setuptools
@@ -49,12 +49,12 @@ requirements:
     - pkgconfig
     - python
     - setuptools
-    - sundials >=6.0.0,<7
+    - sundials >=7
   run:
     - numpy
     - python
     - scipy
-    - sundials >=6.0.0,<7
+    - sundials >=7
 
 test:
   imports:
