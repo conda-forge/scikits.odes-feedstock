@@ -12,7 +12,7 @@ source:
     sha256: 1b30a156e4eaa3856e9b1fbf71362c748d45d2f9260bfed6d527ee95983c3360
     folder: scikits-odes-core
   - url: https://pypi.org/packages/source/s/scikits-odes-daepack/scikits_odes_daepack-3.0.0.tar.gz
-    sha256: b4dc7f724d17fb8febd9935a2904b78d7061f4258aac04180452892ad5c1becb
+    sha256: 26ff10369819e4e115253238542acfe4440a03a41792a7a2d741d57d4eb92569
     folder: scikits-odes-daepack
   - url: https://pypi.org/packages/source/s/scikits-odes-sundials/scikits_odes_sundials-{{ version }}.tar.gz
     sha256: 18c35ab2645289226ff16804db082fb91d1d31d3ee05f316d8b012accaea7032
