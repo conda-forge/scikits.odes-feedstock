@@ -18,7 +18,7 @@ source:
     sha256: 18c35ab2645289226ff16804db082fb91d1d31d3ee05f316d8b012accaea7032
     folder: scikits-odes-sundials
 build:
-  number: 0
+  number: 1
   script:
     - {{ PYTHON }} -m pip install -vv --no-dependencies --no-build-isolation scikits-odes-core/
     - {{ PYTHON }} -m pip install -vv --no-dependencies --no-build-isolation scikits-odes-sundials/
