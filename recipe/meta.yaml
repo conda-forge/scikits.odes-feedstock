@@ -24,7 +24,8 @@ build:
     - {{ PYTHON }} -m pip install -vv --no-dependencies --no-build-isolation scikits-odes-sundials/
     - export PKG_CONFIG_PATH=$PREFIX/lib/pkgconfig                                    # [build_platform != target_platform]
     - echo "python = '${PREFIX}/bin/python'" >> ${CONDA_PREFIX}/meson_cross_file.txt  # [build_platform != target_platform]
-    - MESON_ARGS_REDUCED="$(echo $MESON_ARGS | sed 's/--buildtype release //g')"  # [unix]
+    # C standard c17 required on linux, see: https://github.com/bmcage/odes/issues/202
+    - MESON_ARGS_REDUCED="$(echo $MESON_ARGS | sed 's/--buildtype release //g') -Dc_std=c17"  # [unix]
     - {{ PYTHON }} -m pip install -vv --no-dependencies --no-build-isolation scikits-odes-daepack/ -Csetup-args=${MESON_ARGS_REDUCED// / -Csetup-args=}  # [unix]
     - {{ PYTHON }} -m pip install -vv --no-dependencies --no-build-isolation scikits-odes-daepack/  # [not unix]
     - {{ PYTHON }} -m pip install --no-dependencies --no-build-isolation . -vv
