@@ -6,25 +6,26 @@ package:
   version: {{ version }}
 
 source:
-  - url: https://pypi.org/packages/source/s/scikits.odes/scikits_odes-{{ version }}.tar.gz
+  - url: https://files.pythonhosted.org/packages/source/s/scikits.odes/scikits_odes-{{ version }}.tar.gz
     sha256: b4dc7f724d17fb8febd9935a2904b78d7061f4258aac04180452892ad5c1becb
-  - url: https://pypi.org/packages/source/s/scikits-odes-core/scikits_odes_core-{{ version }}.tar.gz
+  - url: https://files.pythonhosted.org/packages/source/s/scikits-odes-core/scikits_odes_core-{{ version }}.tar.gz
     sha256: 1b30a156e4eaa3856e9b1fbf71362c748d45d2f9260bfed6d527ee95983c3360
     folder: scikits-odes-core
-  - url: https://pypi.org/packages/source/s/scikits-odes-daepack/scikits_odes_daepack-3.0.0.tar.gz
+  - url: https://files.pythonhosted.org/packages/source/s/scikits-odes-daepack/scikits_odes_daepack-3.0.0.tar.gz
     sha256: 26ff10369819e4e115253238542acfe4440a03a41792a7a2d741d57d4eb92569
     folder: scikits-odes-daepack
-  - url: https://pypi.org/packages/source/s/scikits-odes-sundials/scikits_odes_sundials-{{ version }}.tar.gz
+  - url: https://files.pythonhosted.org/packages/source/s/scikits-odes-sundials/scikits_odes_sundials-{{ version }}.tar.gz
     sha256: 18c35ab2645289226ff16804db082fb91d1d31d3ee05f316d8b012accaea7032
     folder: scikits-odes-sundials
 build:
-  number: 5
+  number: 6
   script:
     - {{ PYTHON }} -m pip install -vv --no-dependencies --no-build-isolation scikits-odes-core/
     - {{ PYTHON }} -m pip install -vv --no-dependencies --no-build-isolation scikits-odes-sundials/
     - export PKG_CONFIG_PATH=$PREFIX/lib/pkgconfig                                    # [build_platform != target_platform]
     - echo "python = '${PREFIX}/bin/python'" >> ${CONDA_PREFIX}/meson_cross_file.txt  # [build_platform != target_platform]
-    - MESON_ARGS_REDUCED="$(echo $MESON_ARGS | sed 's/--buildtype release //g')"  # [unix]
+    # C standard c17 required on linux, see: https://github.com/bmcage/odes/issues/202
+    - MESON_ARGS_REDUCED="$(echo $MESON_ARGS | sed 's/--buildtype release //g') -Dc_std=c17"  # [unix]
     - {{ PYTHON }} -m pip install -vv --no-dependencies --no-build-isolation scikits-odes-daepack/ -Csetup-args=${MESON_ARGS_REDUCED// / -Csetup-args=}  # [unix]
     - {{ PYTHON }} -m pip install -vv --no-dependencies --no-build-isolation scikits-odes-daepack/  # [not unix]
     - {{ PYTHON }} -m pip install --no-dependencies --no-build-isolation . -vv
